@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-sm-12">
+        <p class="heading">Pay Refer Points</p>
+        <div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Refer Points</td>
+                                <td><i class="fa fa-rupee-sign icons-color"></i> {{payRewardData ?.rewards ?.referral_reward}}</td>
+                                <td *ngIf="payRewardData ?.paid_status ?.referral_reward_status == 'Paid'"><button class="btn  paid-btn">Paid</button></td>
+                                <td *ngIf="payRewardData ?.paid_status ?.referral_reward_status =='Unpaid'"><button class="btn  pay-btn" (click)="payReward('referral_reward',payRewardData.rewards.referral_reward)">Pay</button></td>
+                            </tr>
+                            <tr>
+                                <td>Hiring Points</td>
+                                <td><i class="fa fa-rupee-sign icons-color"></i> {{payRewardData ?.rewards ?.hiring_reward}}</td>
+                                <td *ngIf="payRewardData ?.paid_status ?.hiring_reward_status == 'Unpaid'"><button class="btn  pay-btn" (click)="payReward('hiring_reward',payRewardData.rewards.hiring_reward)">Pay</button></td>
+                                <td *ngIf="payRewardData ?.paid_status ?.hiring_reward_status == 'Paid'"><button class="btn  paid-btn">Paid</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

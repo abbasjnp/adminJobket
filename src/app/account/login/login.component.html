@@ -1,0 +1,94 @@
+<div class="container">
+
+    <div class="background col-sm-12">
+        <br>
+        <div class="Page row">
+            <br>
+            <div class="miniBackground col-sm-12" style="height: auto;   padding-bottom: 50px;">
+
+                <div class="colsSize col-sm-12">
+
+                    <div class="logo">
+
+                        <img src="./../../../assets/images/logo.png" style=" height: 82px; width: 100px; ">
+
+                    </div>
+
+                    <h2 class="txt"><b style="font-weight: 800;">Login to your Account</b></h2>
+
+                    <p class="Paragraph">Enter your Perosnal Details and use Dashboard. Lorem dolor sit amet, consectetur adipiscing elit. Aenean sagittis neque leo.</p>
+
+                    <br>
+                    <div>
+
+                        <form class="form" [formGroup]="form">
+
+                            <label class="need" for="email"><img src="./../../../assets/icons/email.png">Email Address</label>
+                            <div class="form-group">
+                                <div class="Input-Black ">
+                                    <div class="Input-Gray email">
+                                        <div class="gray">
+
+
+                                            <input class="form-control" type="email" name="email" id="email" placeholder="Enter your Email Address" formControlName="email" required>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+
+                                    <div *ngIf="email.errors.required">
+                                        Email is required.
+                                    </div>
+                                    <div *ngIf="email.errors.pattern">
+                                        Please Enter a Valid Email
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <label class="need" for="password"><img src="./../../../assets/icons/password.png">Password</label>
+                            <div class="form-group">
+                                <div class="Input-Black ">
+                                    <div class="Input-Gray password">
+
+                                        <div class="gray">
+                                            <input class="form-control" type="password" name="password" id="password" placeholder="Enter your Password" formControlName="password" required>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+
+                                    <div *ngIf="password.errors.required">
+                                        Password is required.
+                                    </div>
+                                    <div *ngIf="password.errors.minlength">
+                                        Password must be 4 characters long
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="shift">
+                                <!-- <div class="rightShift row">
+                                    <a routerLinkActive="active">Forgot Password ?</a>
+                                </div> -->
+                                <br>
+                                <br>
+                                <div class="loginBtn">
+                                    <button class="login" type="button" (click)="onSubmit();" style="font-size:16px">
+                    Login <img src="./../../../assets/icons/right arrow.png" style="margin-left: 10px;"> </button>
+                                    <br><br>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- <div class="need s1">Need a Jobket account <span>Create an account</span></div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

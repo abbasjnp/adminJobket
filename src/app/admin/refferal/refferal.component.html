@@ -1,0 +1,87 @@
+<section class="content-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li style="color:black;">
+                        <i class="fa fa-home"></i>
+                        <a href="#">Dashboard </a>
+                    </li>
+                    <li style="color:#e43302">Referral</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="employee-header">
+                    <h2>All Referral</h2>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="search-4">
+                    <input class="form-control" #box (keyup.enter)="searchData()" [(ngModel)]="searchText" placeholder="Search By Job ID....">
+                    <button class="btn btn-search-4" (click)="searchData()"><i class="fa fa-search"></i></button>
+                    <!-- <button (click)="getEmployeeData()" type="button" class="filter-from-input-box-button"> Download Data</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="job_id">
+                        <mat-header-cell *matHeaderCellDef>Job ID</mat-header-cell>
+                        <mat-cell *matCellDef="let element; let i = index;">{{element.job_id}}</mat-cell>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="applicant_name">
+                        <mat-header-cell *matHeaderCellDef>Applicat Name</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.applicant_name}}</mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="job_title">
+                        <mat-header-cell *matHeaderCellDef>Job Title</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.job_title}}</mat-cell>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="company">
+                        <mat-header-cell *matHeaderCellDef>Company</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.company}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="referred_by_name">
+                        <mat-header-cell *matHeaderCellDef>Referred By Name</mat-header-cell>
+                        <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                            <a (click)="applyJob(element.referred_by_id)">{{element.referred_by_name}}</a>
+                            <a *ngIf="element.referred_by_name==null" (click)="applyJob(element.referred_by_id)">No Name</a>
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="pay">
+                        <mat-header-cell *matHeaderCellDef>Pay</mat-header-cell>
+                        <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                            <button mat-button (click)="openDialog(element)" class="primair">
+                          <i class="fa fa-plus"></i>
+                          </button>
+                        </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalPages*10 }" (click)="applyJob(row.applicant_id)">
+                    </mat-row>
+                </mat-table>
+                <div class="pagination ">
+                    <pagination-controls (pageChange)="pageChange($event)"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

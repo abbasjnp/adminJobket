@@ -1,0 +1,214 @@
+<section class="viewjob-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <div class="content-1">
+                    <h2 [innerHTML]="dataTable?.designation"></h2>
+                    <h2>at</h2>
+                    <h2 [innerHTML]="dataTable?.company_name"></h2>
+                    <p [innerHTML]="dataTable?.company_detail"></p>
+                    <!-- <h2>{{dataTable?.designation}} at {{dataTable?.company_name}}</h2> -->
+                    <!-- <p>{{dataTable?.company_detail}}</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="viewjob-content">
+    <div class="container">
+        <div class="row">
+            <div class="card shadow-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <h2 class="inline">Job Information</h2>
+                            <img src="../../../assets/icons/edit-orange.png" (click)="openDialogJobInfo()" data-toggle="modal" data-target="#myModal" alt=".." class="inline-block edit-icon">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 mtb-20">
+                            <div class="bx-img">
+                                <img class="company-logo" src="{{picUrl}}{{dataTable?.comapny_logo}}">
+                            </div>
+                            <div class="bx-content">
+                                <h3>{{dataTable?.title}}</h3>
+                                <h4 class="inline"> <img class="MR" src="./../../../assets/icons/experience.png"> Experience : {{dataTable?.min_experience}} Year - {{dataTable?.max_experience}} Year</h4>
+                                <span class="span-1"></span>
+                                <h4 class="inline">Salary : {{dataTable?.min_salary/100000}} L-{{dataTable?.max_salary/100000}} L P.A</h4>
+                            </div>
+                            <div class="bx-content MG">
+                                <h4 class="inline"><i class="fa fa-user"></i>Employement Type : {{dataTable?.job_type}}</h4>
+                            </div>
+                            <div class="bx-content MG">
+                                <h4 class="inline"> <img class="MR" src="./../../../assets/icons/address.png"> Location : {{dataTable?.address}} {{dataTable?.location}}</h4>
+                            </div>
+
+                            <div class="bx-content">
+                                <h4 class="inline-block">Job Status : <span> {{dataTable?.job_status}}</span></h4>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3>About Role</h3>
+                                <p>{{dataTable?.job_role}}</p>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3>Category</h3>
+                                <p>{{dataTable?.category?.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3>Sub Category</h3>
+                                <p>{{dataTable?.sub_category?.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3 class="inline">Salary</h3>
+                                <p>{{dataTable?.min_salary/100000}} L-{{dataTable?.max_salary/100000}} L P.A</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3>Salary Description</h3>
+                                <h4 class="jd-detail" [innerHTML]="dataTable?.salary_description"></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3 class="inline">Key skill</h3>
+                                <img src="./../../../../assets/icons/edit-orange.png" (click)="openDialogKeySkill()" alt=".." class="inline-block edit-icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mtb-20 pdtb-15">
+                        <div class="col-md-2 col-sm-3" *ngFor="let row of skillsTable">
+                            <div class="key-skill">
+                                <span>{{row}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3 class="inline">Company Profile</h3>
+                                <img src="../../../assets/icons/edit-orange.png" (click)="openDialogCompanyProfile()" alt=".." class="inline-block edit-icon">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mtb-20 pdtb-15">
+                        <div class="col-md-12">
+                            <p [innerHTML]="dataTable?.company_detail"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="inline">Roles & Responsibilities</h2>
+                            <img src="./../../../../assets/icons/edit-orange.png" (click)="openDialogJobDescription()" alt=".." class="inline-block edit-icon">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <!-- <h3>Description</h3> -->
+                                <div class="jd-detail" [innerHTML]="dataTable?.description"></div>
+                                <!-- <pre class="font-16 bbn">{{dataTable?.description}}</pre> -->
+
+                                <!-- <p [innerHTML]="dataTable?.description"></p> -->
+
+                                <h3 class="inline">Required Qualification</h3>
+                                <img src="../../../../assets/icons/add-1.png" (click)="openDialogRequirement()" alt=".." class="inline-block edit-icon img-add">
+
+                                <ul *ngFor="let data of jobRequirements;let i=index">
+                                    <li><i class="fa fa-star"></i>{{data.requirement}}</li>
+                                    <li style="padding-left:35px">
+                                        <img src="../../../../assets/icons/edit-orange.png" style="width:15px" (click)="openDialogEditRequirement(data,i)">
+                                        <i class="fa fa-close" style="font-size:16px;color:red;margin-left:10px" (click)="removeRequirement(data,i)"></i>
+                                    </li>
+                                </ul>
+                                <!-- ========Desired Qualification=========== -->
+                                <h3 class="inline">Desired Requirement</h3>
+                                <img src="../../../../assets/icons/add-1.png" (click)="openDialog_d_qualification()" alt=".." class="inline-block edit-icon img-add">
+
+                                <ul *ngFor="let data of d_Qualification;let i=index">
+                                    <li><i class="fa fa-star"></i>{{data.requirement}}</li>
+                                    <li style="padding-left:35px">
+                                        <img src="../../../../../assets/icons/edit-orange.png" style="width:15px" (click)="openDialogEdit_d_qualification(data,i)">
+                                        <i class="fa fa-close" style="font-size:16px;color:red;margin-left:10px" (click)="remove_d_qualification(data,i)"></i>
+                                    </li>
+                                </ul>
+                                <!-- ======================================== -->
+                                <!-- ========Job Questions=========== -->
+                                <h3 class="inline">Job Questions</h3>
+                                <img src="../../../assets/icons/add-1.png" (click)="openDialog_job_questions()" alt=".." class="inline-block edit-icon img-add">
+
+                                <ul *ngFor="let data of job_questions;let i=index">
+                                    <li><i class="fa fa-star"></i> {{data.question}}
+                                    </li>
+                                    <li style="padding-left:35px">
+                                        <img src="../../../assets/icons/edit-orange.png" style="width:15px" (click)="openDialogEdit_job_questions(data,i)">
+                                        <i class="fa fa-close" style="font-size:16px;color:red;margin-left:10px" (click)="remove_job_questions(data,i)"></i>
+                                    </li>
+                                </ul>
+                                <!-- ======================================== -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3 class="inline">Location</h3>
+                                <!-- <img src="../../../assets/icons/edit-orange.png" (click)="openDialogLocation()" alt=".." class="inline-block edit-icon"> -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mtb-20 pdtb-15">
+                        <div class="col-md-12">
+                            <!-- {{dataTable?.headquateraddress}} -->
+                            {{dataTable?.address}} {{dataTable?.location}}
+                            <div class="map">
+                                <br>
+                                <agm-map id="map" [latitude]="lat" [longitude]="lng" [zoomControl]="false" [streetViewControl]="false" [disableDoubleClickZoom]="true" [mapDraggable]="true">
+                                    <!-- <agm-direction [origin]="origin" [destination]="destination"></agm-direction> -->
+                                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                                </agm-map>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

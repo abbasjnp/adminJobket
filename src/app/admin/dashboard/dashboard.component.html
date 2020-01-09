@@ -1,0 +1,194 @@
+<section class="content-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="breadcrumb-title">Job Portal Management</h3>
+            </div>
+            <div class="col-md-6">
+                <ul class="breadcrumb" style="float:right">
+                    <li>
+                        <a href="#" style="color:#e43302">Dashboard -</a>
+                    </li>
+                    <li style="color:black;">Job Portal</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="circle col-md-12" style="margin-top: 4px;">
+                <div class="MarginP" *ngFor="let row of ProgressBardata">
+                    <circle-progress [title]="row.title" [percent]="row.percentage" [titleColor]="row.titleColor" [maxPercent]="100" [outerStrokeColor]="row.outerStrokeColor" [outerStrokeGradientStopColor]="row.outerStrokeGradientStopColor" [innerStrokeColor]="row.innerStrokeColor"
+                        [animation]="true" [animationDuration]="300"></circle-progress>
+                    <p class="heading">{{row.heading}}</p>
+                </div>
+            </div>
+
+            <div class="col-md-12" style="margin-top:4px;border-radius: 5px; background: white;">
+                <div class="row" style="margin-top:2%;">
+                    <div style="font-size:12px;color:gray;margin-right:2%;float:right; padding-left:5px;width:160px;transform: skew(-10deg);border:1px solid black;">
+                        <span style="margin-right: 3px;">Sort By Years:</span>
+                        <select class="backColor" id="back" [(ngModel)]="yearFilter" (change)="yearSelected()" style="font-size:10px; color: black;   width: 70%;background:none;outline:none;padding: 5px;font-size: 12px;height: 26px;background: url(../../../assets/images/downarrow.png) no-repeat 99%50% transparent;-webkit-appearance: none;transform: skew(10deg);">
+                                    <option   *ngFor="let y of years"  [ngValue]="y">{{y.year}}</option>
+                                    
+                        </select>
+                    </div>
+                    <div style="margin-right:2%;float:left;">
+                        <p style="margin-left:17px;font-size: 12px;font-weight: bolder;color: black;">Job Application Details</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="chart col-md-8">
+                        <fusioncharts [width]="width" [height]="height" [type]="type" [dataFormat]="dataFormat" [dataSource]="dataSource">
+                        </fusioncharts>
+                    </div>
+                    <div class="col-md-3" style="margin-top: 61px;">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <img src="./../../../assets/images/jobpost.png">
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="heading" style="color:#F7B956">{{totalApplicants}}</div>
+                                <div class="heading1">Total Applicants</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <img src="./../../../assets/images/applicants.png">
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="heading" style="color:#7CB41F">{{totalOffers}}</div>
+                                <div class="heading1">Total Offers</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <img src="./../../../assets/images/referral.png">
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="heading" style="color:#459BFE;">{{totalReferrals}}</div>
+                                <div class="heading1">Total Referrals</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="content-main">
+                <div class="row mtb-20">
+                    <div class="col-md-6">
+                        <h3>List of Posted Job</h3>
+                    </div>
+                    <div class="col-md-6 pull-right">
+                        <div class="pull-right">
+                            <div class="key-skill">
+                                <span><a routerLink="/admin/job-opening">View More</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cnt radius">
+                    <div class="example-container mat-elevation-z8">
+                        <div class="mat-table-main">
+                            <mat-table [dataSource]="dataSources" class="mat-table">
+                                <ng-container *ngFor="let col of colDefs" [matColumnDef]="col.name">
+                                    <mat-header-cell *matHeaderCellDef class="mat-header-song" [ngStyle]="{ 'min-width': col.width }">
+                                        {{ col.displayName | uppercase }}
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element" class="table-element" [ngStyle]="{ 'min-width': col.width }" innerHTML="{{ element[col.name] }}">
+                                    </mat-cell>
+                                </ng-container>
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+                            </mat-table>
+                        </div>
+                        <!-- <mat-paginator #paginator [length]="10" [pageSize]="10" [pageSizeOptions]="[10]" [showFirstLastButtons]="true">
+                        </mat-paginator> -->
+
+                    </div>
+                </div>
+                <!-- <div style="height: 50px; width: 100%; float: left;"></div> -->
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+            <mat-card class="cardContent" style="background-image: linear-gradient(to bottom right, #fda408, #e43302);">
+
+                <mat-card-content style="margin:10px">
+                    <h2><span>{{dashboardData ?.total_employers}}</span></h2>
+                </mat-card-content>
+
+                <mat-card-content>
+
+                    <h3 style="margin-left: 30%;">Total Company Register</h3>
+
+                    <!-- <p style="margin-left: 30%;" class="card-content">Lorem ipsum dolor sit a adipiscing elit. Aenean sagittis neque leo, sed euismod lectus viverra vitae</p> -->
+
+                </mat-card-content>
+
+            </mat-card>
+
+            <mat-card class="cardContent" style="background-image: linear-gradient(to bottom right, #1d7f50,#169b45);">
+
+                <mat-card-content style="margin:10px">
+                    <h2><span>{{dashboardData ?.total_job_post}}</span>
+                    </h2>
+                </mat-card-content>
+
+                <mat-card-content>
+
+                    <h3 style="margin-left: 30%;">Total Job Post</h3>
+
+                    <!-- <p style="margin-left: 30%;" class="card-content">Lorem ipsum dolor sit a adipiscing elit. Aenean sagittis neque leo, sed euismod lectus viverra vitae</p> -->
+                </mat-card-content>
+            </mat-card>
+
+            <mat-card class="cardContent" style="background-image: linear-gradient(to bottom right, #8c4fe9, #c169ee);">
+
+                <mat-card-content style="margin:10px">
+                    <!-- <h2><span class="dot">{{dashboardData.total_job_offers}}</span></h2> -->
+                    <h2><span>{{dashboardData ?.total_job_offers}}</span></h2>
+
+                </mat-card-content>
+
+                <mat-card-content>
+
+                    <h3 style="margin-left: 30%;">Total Job Offer</h3>
+
+                    <!-- <p style="margin-left: 30%;" class="card-content">Lorem ipsum dolor sit a adipiscing elit. Aenean sagittis neque leo, sed euismod lectus viverra vitae</p> -->
+                </mat-card-content>
+            </mat-card>
+            <div>
+                <div style="width:100%;height:100%;">
+                    <div style="padding:4%;width:84%;margin-left: 1%;height: auto; background: white; box-shadow: 0px 1px 0.5px rgba(112, 107, 107, 0.705) inset, 0px 0px 5px rgba(112, 107, 107, 0.705);border-radius: 5px;">
+                        <div style="margin-top:5%;font-size:16px;">
+                            Notification
+                        </div>
+
+
+                        <div style="margin-top:10%; width: inherit;" *ngFor="let k of notifications">
+                            <span><i *ngIf="k.profilepic=='media/'" class="fas fa-user-circle fa-2x" style="margin-top:2%;"> </i> </span>
+                            <span *ngIf="k.profilepic!='media/'"><img src="{{picUrl}}{{k.profilepic}}" style=" width:44px; height: 39px; border-radius:100%;"></span>
+                            <span style="color:black;font-size:11px;display: inline-block;
+                            margin-left: 20px;"><b>{{k.fullname}} &emsp;</b>applied for job<br> {{k.job}}</span>
+
+                            <!-- <div style="outline:1px solid #d5d5d5;margin-top:8%;margin-left:10%;"></div> -->
+                        </div>
+                        <!-- <div style="margin-top:10%;">
+                            <i class="fas fa-user-circle fa-2x" style="margin-top:2%;"><span><img src="assets/images/piyush.png" style="height:25px;"></span></i><span style="float:right;margin-top:2%;">--------
+                                            <br>
+                                            <span style="color:red;font-size:10px;">--------</span>
+                            </span>
+                            <div style="outline:1px solid #d5d5d5;margin-top:8%;margin-left:10%;"></div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

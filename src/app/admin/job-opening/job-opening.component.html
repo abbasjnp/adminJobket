@@ -1,0 +1,112 @@
+<section class="content-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li style="color:black;">
+                        <i class="fa fa-home"></i>
+                        <a href="#">Dashboard </a>
+                    </li>
+                    <li style="color:#e43302">Job Opening</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="employee-header">
+                    <h2>Job Opening</h2>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field>
+                    <mat-label>Sort By Applicants Status</mat-label>
+                    <mat-select [(value)]="selected" (selectionChange)="sortByTableData($event)">
+                        <mat-option value="">All</mat-option>
+                        <mat-option value="active">Active</mat-option>
+                        <mat-option value="deactivated">Deactivated</mat-option>
+                        <mat-option value="applicant">No Of Applicants</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-md-4">
+                <div class="search-4">
+                    <input class="form-control" (change)="searchData()" [(ngModel)]="searchText" placeholder="Search By job id, job title, comapny name....">
+                    <button class="btn btn-search-4" (click)="searchData()"><i class="fa fa-search"></i></button>
+                    <!-- <button (click)="getEmployeeData()" type="button" class="filter-from-input-box-button"> Download Data</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <ng-container matColumnDef="jobID">
+                        <mat-header-cell *matHeaderCellDef> Job ID </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.job_id}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="position">
+                        <mat-header-cell *matHeaderCellDef> Title of Position </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Designation">
+                        <mat-header-cell *matHeaderCellDef> Designation </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.designation}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="experience">
+                        <mat-header-cell *matHeaderCellDef> Experience </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.experience}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="pdate">
+                        <mat-header-cell *matHeaderCellDef> Posted Date </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.posted_date}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="expdate">
+                        <mat-header-cell *matHeaderCellDef> Expire Date </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.expire_date}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="noapplicants">
+                        <mat-header-cell *matHeaderCellDef> No. of Applicants </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.no_of_applicants}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="cname">
+                        <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.company_name}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="location">
+                        <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="status">
+                        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.status}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="edit">
+                        <mat-header-cell *matHeaderCellDef> Edit </mat-header-cell>
+                        <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                            <i class="fa fa-edit" (click)="editjob(element.id)"></i>
+                        </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns | paginate: { itemsPerPage: 10, currentPage: pagec, totalItems: totalPages*10 }" (click)="viewJobs(row.id)"></mat-row>
+                </mat-table>
+                <div class="pagination">
+                    <pagination-controls (pageChange)="pageChange($event)" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page" screenReaderCurrentLabel="page"></pagination-controls>
+                </div>
+                <!-- <div class="container">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link">Previous</a></li>
+                        <li class="page-item" *ngFor="let page of [1,2,3,34,4,55,5]"><a class="page-link" [routerLink]="['/admin/job-opening']" [queryParams]="{pageNumber: page}">{{page}}</a></li>
+                        <li class="page-item"><a class="page-link">Next</a></li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>

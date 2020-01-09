@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-sm-12">
+        <p class="heading">Add Hyperhire Points</p>
+        <div>
+            <div *ngIf="dialogDropdown">
+                <mat-label>Select Hyperhire Point Template</mat-label>
+                <div class="GrayBorder">
+                    <div class="GrayBackground">
+                        <mat-select class="DropDownMenu" (selectionChange)="hyperHireTable($event)" placeholder="choose hyperhire point template">
+                            <mat-option *ngFor="let row of dialogData" [value]="row.title" (click)="AddhiperhireRules(row.id)">
+                                {{row.title}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </div><br>
+            </div>
+            <div>
+
+                <div class="skillBtnBack">
+                    <button class="skillBtn TextFont" (click)="changeValue(1)"><i class="fas fa-plus Mg"></i>Add New Hyperhire Point Template</button>
+                </div>
+
+                <form [formGroup]='formName'>
+
+                    <div class="GrayBorder" *ngIf="DialogAppliedBtn">
+
+                        <div class="GrayBackground">
+                            <input type="text" class="DropDownMenu" formControlName="skills" placeholder="hyperhire point template title....">
+                        </div>
+                    </div>
+                    <div formArrayName="controllerArray">
+                        <div *ngFor="let item of formName.get('controllerArray')['controls']; let i=index" [formGroupName]="i">
+                            <div class="GrayBorder" *ngIf="DialogAppliedBtn">
+                                <div class="GrayBackground">
+                                    <input (keyup)="onKey($event)" formControlName="rules" class="DropDownMenu" placeholder="enter criteria....">
+                                </div>
+                                <div class="btn-head">
+                                    <button (click)='removeInput(i)' class="btn-remove"><i class="fa fa-times"></i> </button>
+                                </div>
+                            </div>
+                        </div>
+                        <button *ngIf="DialogAppliedBtn" (click)='addInput()' class="btn-add1"><i class="fa fa-plus"></i> </button>
+                    </div>
+                </form>
+
+            </div><br>
+
+            <div *ngIf="showHIdeButton">
+                <div class="row" *ngFor="let data of dialogrulesData; let i=index">
+                    <div class="col-sm-12">
+                        <table class="Table">
+                            <tr>
+                                <div class="DIF">
+                                    <div class="col-sm-6">
+                                        <td class="TextFont">{{data}}</td>
+                                    </div>
+                                    <div class="col-sm-4 paddingRadio">
+                                        <mat-radio-group aria-label="Select an option" (change)="changeRadioButton($event,data)">
+                                            <div class="inline">
+                                                <mat-radio-button value="True">YES</mat-radio-button>
+                                                <mat-radio-button value="False">NO</mat-radio-button>
+                                            </div>
+                                        </mat-radio-group>
+                                    </div>
+                                </div>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <button *ngIf="DialogAppliedBtn" class="filter-from-input-box-button WD" type="button" (click)="addSkills()" cdkFocusInitial>Add Template</button>
+            <button *ngIf="showHIdeButton" class="filter-from-input-box-button WD" type="button" (click)="savePoints()" cdkFocusInitial>Save Points</button>
+        </div>
+    </div>
+
+</div>

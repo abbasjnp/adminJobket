@@ -1,0 +1,85 @@
+<section class="content-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li style="color:black;">
+                        <i class="fa fa-home"></i>
+                        <a href="#">Dashboard </a>
+                    </li>
+                    <li style="color:#e43302">User Preference</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="employee-header">
+                    <h2>All User Preference</h2>
+                </div>
+            </div>
+            <!-- <div class="col-md-9">
+                <mat-form-field>
+                    <mat-label>Filter By User Tracking</mat-label>
+                    <mat-select [(value)]="selected" (selectionChange)="sortByTableData($event)">
+                        <mat-option value="facebook" selected>Facebook</mat-option>
+                        <mat-option value="linkedin">Linkedin</mat-option>
+                        <mat-option value="whatsapp">Whatsapp</mat-option>
+                        <mat-option value="copylink">Copylink</mat-option>
+                        <mat-option value="copyreferral">Copyreferral</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div> -->
+            <div class="col-md-9">
+                <div class="search-5">
+                    <!-- <input class="form-control" #box (keyup.enter)="searchData()" [(ngModel)]="searchText" placeholder="Search By JobSeekar ID And Email ID....">
+                    <button class="btn btn-search" (click)="searchData()"><i class="fa fa-search"></i></button> -->
+                    <button (click)="getUserPreferenceExportData()" type="button" class="filter-from-input-box-button dwn-btn"> Download Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="email">
+                        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+                        <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                            <a (click)="goTOUserDetails(element)">{{element.email}}</a>
+                        </mat-cell>
+                    </ng-container>
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="category">
+                        <mat-header-cell *matHeaderCellDef>Category</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.category}} </mat-cell>
+                    </ng-container>
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="location">
+                        <mat-header-cell *matHeaderCellDef>Location</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="promotional_mail">
+                        <mat-header-cell *matHeaderCellDef>Promotional Mail </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <td mat-cell *ngIf="element.promotional_mail==true">Yes</td>
+                            <td mat-cell *ngIf="element.promotional_mail==false">No</td>
+                        </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalPages*10 }" (click)="snsUserDetails(row.user_id)">
+                    </mat-row>
+                </mat-table>
+                <div class="pagination ">
+                    <pagination-controls (pageChange)="pageChange($event) "></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

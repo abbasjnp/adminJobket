@@ -1,0 +1,116 @@
+<section class="content-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li style="color:black;">
+                        <i class="fa fa-home"></i>
+                        <a href="#">Dashboard </a>
+                    </li>
+                    <li style="color:#e43302">Sns User Tracking</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="employee-header">
+                    <h2>All Sns User Tracking</h2>
+                </div>
+            </div>
+            <!-- <div class="col-md-9">
+              <mat-form-field>
+                  <mat-label>Filter By User Tracking</mat-label>
+                  <mat-select [(value)]="selected" (selectionChange)="sortByTableData($event)">
+                      <mat-option value="facebook" selected>Facebook</mat-option>
+                      <mat-option value="linkedin">Linkedin</mat-option>
+                      <mat-option value="whatsapp">Whatsapp</mat-option>
+                      <mat-option value="copylink">Copylink</mat-option>
+                      <mat-option value="copyreferral">Copyreferral</mat-option>
+                  </mat-select>
+              </mat-form-field>
+          </div> -->
+            <!-- <div class="col-md-6">
+              <div class="search-1">
+                  <input class="form-control" #box (keyup.enter)="searchData()" [(ngModel)]="searchText" placeholder="Search By JobSeekar ID And Email ID....">
+                  <button class="btn btn-search" (click)="searchData()"><i class="fa fa-search"></i></button>
+                  <button (click)="getEmployeeData()" type="button" class="filter-from-input-box-button"> Download Data</button>
+              </div>
+          </div> -->
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="job">
+                        <mat-header-cell *matHeaderCellDef>Job</mat-header-cell>
+                        <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                            <a (click)="viewJobs(element.job_id)">{{element.job}}</a>
+                        </mat-cell>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <!-- <ng-container matColumnDef="job">
+                      <mat-header-cell *matHeaderCellDef>Job</mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.job}} </mat-cell>
+                  </ng-container> -->
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="facebook">
+                        <mat-header-cell *matHeaderCellDef>Facebook Count</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.facebook}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="linkedin">
+                        <mat-header-cell *matHeaderCellDef>Linkedin Count</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.linkedin}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="whatsapp">
+                        <mat-header-cell *matHeaderCellDef>Whatsapp Count</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.whatsapp}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="copylink">
+                        <mat-header-cell *matHeaderCellDef>Referral Link Count </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.copylink}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="copyreferral">
+                        <mat-header-cell *matHeaderCellDef>Referral Code Count</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.copyreferral}} </mat-cell>
+                    </ng-container>
+                    <!-- <ng-container matColumnDef="location">
+                    <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
+                </ng-container> -->
+                    <!-- <ng-container matColumnDef="hyperhire_points">
+                    <mat-header-cell *matHeaderCellDef> Hyper Point </mat-header-cell>
+                    <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                        <a (click)="openDialoghyperPointDetails(element)">{{element.hyperhire_points.given_points}}{{slash}}{{element.hyperhire_points.total_points}} </a>
+                    </mat-cell>
+                </ng-container> -->
+                    <!-- <ng-container matColumnDef="Action">
+                    <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                    <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                        <button mat-button (click)="openDialog(element.id)" [disabled]="element.hyperhire_points.given_points" class="primair">
+                        <i class="fa fa-plus"></i>
+                        </button>
+                    </mat-cell>
+                </ng-container> -->
+                    <mat-header-row *matHeaderRowDef="displayedColumns "></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalPages*10 }" (click)="snsUserDetails(row.user_id)">
+                    </mat-row>
+                </mat-table>
+                <div class="pagination ">
+                    <pagination-controls (pageChange)="pageChange($event) "></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

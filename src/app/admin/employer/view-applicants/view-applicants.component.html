@@ -1,0 +1,72 @@
+<section class="content-top">
+    <div class="container">
+      <div class="row">
+      <div class="col-md-12">
+          <ul class="breadcrumb">
+              <li style="color:black;" >
+                <i class="fa fa-home"></i>
+                  <a href="#" >Dashboard </a>
+              </li>
+              <li style="color:black;"><a href="#" >Employer </a></li>
+              <li style="color:black;"><a href="#" >Company Id: #12345 </a></li>
+              <li style="color:black;"><a href="#" >Job Id: #12345 </a></li>
+              <li style="color:#e43302">All Applicants</li>
+          </ul>
+      </div>  
+      </div>
+    </div>
+  </section>
+  <section class="ptb-20">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="employee-header">
+              <h2>All Applicants</h2>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="right">
+              <button type="button" class="filter-from-input-box-button"> Filter</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="mtb-20">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+               
+                <ng-container matColumnDef="cname">
+                  <mat-header-cell *matHeaderCellDef> Candidate Name </mat-header-cell>
+                  <mat-cell  *matCellDef="let element"> {{element.cname}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="email" >
+                  <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                  <mat-cell  *matCellDef="let element"> {{element.email}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="contactus">
+                  <mat-header-cell *matHeaderCellDef> Contact Us </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.contactus}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="Experience">
+                  <mat-header-cell *matHeaderCellDef> Experience </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.Experience}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="applydate">
+                  <mat-header-cell *matHeaderCellDef> Apply Date </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.applydate}} </mat-cell>
+                </ng-container>
+                <ng-container matColumnDef="status">
+                  <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+                </ng-container>              
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              </mat-table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+            </div>
+          </div>
+        </div>
+      </section>

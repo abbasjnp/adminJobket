@@ -1,0 +1,247 @@
+<section class="may-profile-main">
+    <div class="container">
+        <div class="row title-lt1">
+            <div class="col-md-6">
+                <h2><img src="../../../../assets/images/cat.png" alt=".."> Resume</h2>
+            </div>
+            <div class="col-sm-6 btn-back">
+                <div class="shift download-button pull-right">
+                    <button type="button" (click)="backClicked()">Back</button>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="card-company">
+            <div class="card-companybody">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="my-profile-img">
+                            <img src="{{_baseurl}}{{userProfile ?.profile_pic}}">
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="text-white">
+                                    <h4 class="inline">{{ userProfile ?.first_name }} {{ userProfile ?.middle_name }} {{ userProfile ?.last_name }}</h4>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <span class="wid-20">
+                                      <i class="fa fa-map-marker text-white icon"></i>
+                                    </span>
+                                    <span class="wid-80 text-white">
+                                      <h6>{{userProfile ?.location}}</h6>
+                                    </span>
+                                    <span class="wid-20">
+                                        <i class="fa fa-phone text-white icon"></i>
+                                      </span>
+                                    <span class="wid-80 text-white">
+                                        <h6>{{userProfile ?.contact_number1}}</h6>
+                                      </span>
+                                    <span class="wid-20">
+                                          <i class="fa fa-envelope text-white icon"></i>
+                                        </span>
+                                    <span class="wid-80 text-white">
+                                          <h6>{{userProfile ?.email}}</h6>
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row">
+                                    <span class="wid-20">
+                                          <i class="fa fa-briefcase text-white icon"></i>
+                                        </span>
+                                    <span class="wid-80 text-white">
+                                          <h6>{{userTotalExperience ?.years}} Years and {{userTotalExperience ?.months}} Months</h6>
+                                        </span>
+                                    <span class="wid-20">
+                                            <i class="fa fa-phone text-white icon"></i>
+                                          </span>
+                                    <span class="wid-80 text-white">
+                                            <h6>{{userProfile ?.contact_number2}}</h6>
+                                          </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 mtb-10">
+                                <span class="inline text-white">Profile Strength (Excellent)</span>
+                                <span class="display-block text-white pull-right">{{userProfile ?.resume_strength}}%</span>
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" [style.width]="[userProfile ?.resume_strength]" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="card-user">
+                    <div class="card-body profile-heading">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="inline">Key Skill</h3>
+                            </div>
+                        </div>
+
+                        <div class="row pdtb-15 mtb-20">
+                            <div class="row">
+                                <div *ngIf="userProfileResume ?.skill">
+                                    <div class="col-md-4" *ngFor="let skill of userProfileResume ?.skill">
+                                        <div class="key-skill">
+                                            <span>{{skill}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-user">
+                    <div class="card-body profile-heading">
+                        <div class="row">
+                            <div class="col-sm-8">
+                                <div>
+                                    <h3>Experience</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="userProfileResume ?.experience">
+                            <div class="row" *ngFor="let experience of userProfileResume ?.experience; let i = index">
+                                <div class="col-sm-12">
+                                    <h5 class="inline">{{experience.designation}}</h5>
+                                    <p class="mtb-10 color-light">{{experience.company_name}}
+                                    </p>
+                                    <p *ngIf="experience.joining_month !=null || experience.joining_year!=null || experience.leave_month !=null || experience.leave_year !=null" class="color-light">From {{experience.joining_month}} {{experience.joining_year}} To {{experience.leave_month}} {{experience.leave_year}}</p>
+                                    <div *ngIf="experience.roles_and_responsibilities">
+                                        <h5 class="inline">Roles And Responibilities</h5>
+                                        <div>
+                                            <p class="color-light">{{experience.roles_and_responsibilities}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="experience.achievements">
+                                        <h5 class="inline">Achievements</h5>
+                                        <div>
+                                            <p class="color-light">{{experience.achievements}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="experience.salary">
+                                        <h5 class="inline">Salary</h5>
+                                        <div>
+                                            <p class="color-light">{{experience.salary}}</p>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="experience.notice_period">
+                                        <h5 class="inline">Notice Period</h5>
+                                        <div>
+                                            <p class="color-light">{{experience.notice_period}}</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <hr>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card-user">
+                    <div class="card-body profile-heading">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div>
+                                    <h3>Education</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="userProfileResume ?.education">
+                            <div class="row" *ngFor="let education of userProfileResume ?.education">
+                                <div class="col-sm-12">
+                                    <h5 *ngIf="education.degree !=null || education.specialization !=null" class="inline">{{ education.degree }} in {{ education.specialization }}</h5>
+                                    <p *ngIf="education.college !=null" class="color-light mtb-10">{{ education.college }}</p>
+                                    <p *ngIf="education.start_date !=null || education.end_date !=null" class="color-light">From {{ education.start_date }} To {{ education.end_date }}</p>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-user">
+                    <div class="card-body profile-heading">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div>
+                                    <h3>Certifications</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="userProfileResume ?.certification">
+                            <div class="row" *ngFor="let certification of userProfileResume ?.certification">
+                                <div class="col-sm-12">
+                                    <h5 *ngIf="certification.title !=null"> Award Title</h5>
+                                    <p class="inline">{{ certification.title }}</p>
+
+                                    <h5 *ngIf="certification.description !=null"> Award Description</h5>
+                                    <p class="color-light mtb-10">
+                                        {{ certification.description }}</p>
+
+                                    <h5 *ngIf="certification.certification_month !=null">Certification Month</h5>
+                                    <p class="color-light mtb-10">
+                                        {{ certification.certification_month }}</p>
+
+                                    <h5 *ngIf="certification.certification_year !=null">Certification Year</h5>
+                                    <p class="color-light mtb-10">
+                                        {{ certification.certification_year }}</p>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-user">
+                    <div class="card-body profile-heading">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div>
+                                    <h3>Awards</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="userProfileResume ?.award">
+                            <div class="row" *ngFor="let award of userProfileResume ?.award">
+                                <div class="col-sm-12">
+                                    <h5 *ngIf="award.title !=null"> Award Title</h5>
+                                    <p class="inline">{{ award.title }}</p>
+
+                                    <h5 *ngIf="award.description !=null"> Award Description</h5>
+                                    <p class="color-light mtb-10">{{ award.description }}</p>
+
+                                    <h5 *ngIf="award.award_month !=null"> Award Month</h5>
+                                    <p class="color-light mtb-10">{{ award.award_month }}</p>
+
+                                    <h5 *ngIf="award.award_year !=null"> Award Year</h5>
+                                    <p class="color-light mtb-10">{{ award.award_year }}</p>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

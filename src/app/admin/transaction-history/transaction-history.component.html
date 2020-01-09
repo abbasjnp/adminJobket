@@ -1,0 +1,74 @@
+<section class="content-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li style="color:black;">
+                        <i class="fa fa-home"></i>
+                        <a href="#">Dashboard </a>
+                    </li>
+                    <li style="color:#e43302">Transaction History</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="employee-header">
+                    <h2>Transaction History</h2>
+                </div>
+            </div>
+            <div class="col-md-6" *ngIf="false">
+                <div class="right">
+                    <button type="button" class="filter-from-input-box-button"><img src="../../../../assets/icons/filter.png"> Filter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <!-- Position Column -->
+                    <!-- <ng-container matColumnDef="id">
+                        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+                        <mat-cell *matCellDef="let element; let i = index;">{{i}}</mat-cell>
+                    </ng-container> -->
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="user_id">
+                        <mat-header-cell *matHeaderCellDef>User ID</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.user_id}}</mat-cell>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="user">
+                        <mat-header-cell *matHeaderCellDef>User</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.user}}</mat-cell>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="amount">
+                        <mat-header-cell *matHeaderCellDef>Amount</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.amount}}</mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="requested_at">
+                        <mat-header-cell *matHeaderCellDef>Requested At</mat-header-cell>
+                        <mat-cell *matCellDef="let element">{{element.requested_at}}</mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalPages*10 }">
+                    </mat-row>
+                </mat-table>
+                <div class="pagination ">
+                    <pagination-controls (pageChange)="pageChange($event)"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

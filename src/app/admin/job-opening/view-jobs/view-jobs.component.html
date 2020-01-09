@@ -1,0 +1,176 @@
+<section class="content-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li style="color:black;">
+                        <i class="fa fa-home"></i>
+                        <a href="#">Dashboard </a>
+                    </li>
+                    <li style="color:black;"><a href="#">Job Opening </a></li>
+                    <li style="color:#e43302">Job Id: {{jobInformation ?.job_id}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="employee-header">
+                    <h2>Job Id: {{jobInformation ?.job_id}}</h2>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="">
+                    <div class="input-from-box wid-btn-5" *ngIf="false">
+                        <div class="input-icon wid-50">
+                            Change Job Status:
+                        </div>
+                        <div class="input-box wid-50">
+                            <select class="form-control form-control-1" (change)="changeJobStatus($event)">
+                                <option *ngFor="let drpdown of dropDown; let i=index;"  [value]="drpdown">{{drpdown}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="button" class="login-from-input-box-light wid-btn-4" (click)="openDialogaddReward()">Add Reward</button>
+                    <button *ngIf="jobStatus=='deactivated' || jobStatus=='request'" type="button" class="filter-from-input-box-button wid-btn-4" (click)="approveJob()"> Approve</button>
+                    <button *ngIf="jobStatus=='active' || jobStatus=='request'" type="button" class="disapprove-from-input-box-button wid-btn-4" (click)="disaaproveJob()"> Disapprove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="card-company viewjob-banner">
+            <div class="card-companybody">
+                <div class="row">
+                    <div class="col-md-9 col-xs-12">
+                        <div class="content-1">
+                            <h2>{{jobInformation ?.designation}} </h2>
+                            <div [innerHTML]="jobInformation ?.description"></div>
+                            <button type="button" class="login-from-input-box-light wid-btn" (click)="viewApplicant()">View Applicants <i class="fa fa-arrow-right"></i> </button>
+                            <button type="button" class="filter-from-input-box-button wid-btn" (click)="viewCompanyProfile(jobInformation.company_id)">View Company Profile <i class="fa fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="viewjob-content">
+    <div class="container">
+        <div class="row">
+            <div class="card shadow-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Job Information</h2>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mtb-20">
+                            <div class="bx-img">
+                                <img src="{{companyLogo}}" alt="..">
+                            </div>
+                            <div class="bx-content">
+                                <h3>{{jobInformation ?.designation}}</h3>
+                                <h5 class="inline"><i class="fa fa-suitcase"></i><span class="color-light"> Experience :</span>{{jobInformation ?.min_experience}} year - {{jobInformation ?.max_experience}} year</h5> <span class="span-1"></span>
+                                <h5 class="inline-block"><img src="../../../../assets/icons/wallet.png" alt=".."> <span class="color-light"> Salary: </span><i class="fa fa-rupee-sign"></i> {{jobInformation ?.min_salary /100000}} L - <i class="fa fa-rupee-sign"></i> {{jobInformation
+                                    ?.max_salary /100000}} L P.A
+                                </h5>
+                                <h5><i class="fa fa-map-marker-alt"></i> <span class="color-light">Job Location:</span> {{jobInformation ?.location}}</h5>
+                                <h5 class="color-light col-sm-3 pdl-0">Job Status : <span> {{jobInformation ?.job_status}}</span></h5>
+                                <div class="col-sm-9">
+                                    <span class="">
+                                      <a class="referral"><i class="fa fa-rupee-sign"></i> {{jobInformation ?.referral_reward}} of Referral Reward</a> 
+                                      <a class="hiring"><i class="fa fa-rupee-sign"></i> {{jobInformation ?.hiring_reward}} Hiring Reward</a> 
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3>About Role</h3>
+                                <p>{{jobInformation ?.job_role}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3>Key skill</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mtb-20 pdtb-15">
+                        <div class="col-md-3" *ngFor="let keySkills of keySkill">
+                            <div class="key-skill">
+                                <span>{{keySkills}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow-1">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="inline">Job Description</h2>
+                            <!-- <img src="../../../assets/icons/edit-orange.png" alt=".." class="inline-block edit-icon"> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3>Description</h3>
+                                <!-- <p>{{jobInformation ?.description}} </p> -->
+                                <p [innerHtml]="jobInformation ?.description"></p>
+                                <h3>Requirements</h3>
+                                <ul *ngFor="let jobrequirement of jobRequirments">
+                                    <li><i class="fa fa-star"></i>{{jobrequirement ?.requirement}}</li>
+                                </ul>
+                                <h3>Desired Requirements</h3>
+                                <ul *ngFor="let jobdesiredrequirement of jobDesiredRequirments">
+                                    <li><i class="fa fa-star"></i>{{jobdesiredrequirement ?.requirement}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="about-role">
+                                <h3>Job Address</h3>
+                                <!-- <p>{{jobInformation ?.headquateraddress}}</p> -->
+                                <p>{{jobInformation ?.location}} {{jobInformation ?.address}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mtb-20 pdtb-15">
+                        <div class="col-md-12 map">
+                            <div class="map">
+                                <agm-map [latitude]="lat" [longitude]="lng" [zoomControl]="false" [streetViewControl]="false" [disableDoubleClickZoom]="true" [mapDraggable]="true">
+                                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                                </agm-map>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

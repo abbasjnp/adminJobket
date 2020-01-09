@@ -1,0 +1,131 @@
+.card-body {
+    padding: 20px 34px;
+}
+
+// section {
+//     margin-top: 140px;
+// }
+.download-button {
+    display: flex;
+    height: 50px;
+    width: 150px;
+    border-radius: 5px;
+    align-items: center;
+    border: 2px solid black;
+    -webkit-transform: skew(-10deg);
+    transform: skew(-10deg);
+    color: white;
+    justify-content: center;
+    background-image: linear-gradient(to left, #2fca08, #037521);
+}
+
+.download-button button {
+    -webkit-transform: skew(10deg);
+    transform: skew(10deg);
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-family: Poppins-semibold;
+    width: 150px;
+    height: inherit;
+    color: #fff;
+}
+
+h4 {
+    border: none;
+}
+
+.btn-back {
+    float: right;
+}
+
+.btn-back {
+    margin-top: 38px;
+}
+
+.card-user {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 15px #cccccc;
+}
+
+.card-body[_ngcontent-bvu-c4] {
+    padding: 20px 34px;
+}
+
+.card-body {
+    background-clip: border-box;
+    border-radius: 10px;
+    margin: 0 0 1.5rem 0;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    // padding: 2.25rem;
+}
+
+.my-profile-img {
+    max-width: 150px;
+    max-height: 150px;
+    width: 80%;
+    height: auto;
+    position: relative;
+    border-radius: 50%;
+    border: 6px solid #fef0e7;
+    display: block;
+    overflow: hidden;
+    background-image: 100% 100%;
+    margin: 20px auto;
+}
+
+.my-profile-img img {
+    width: 100%;
+    height: 110px;
+}
+
+.text-white h4 {
+    font-family: poppins-semibold;
+}
+
+.inline {
+    display: inline;
+}
+
+.text-white h4 {
+    font-family: poppins-semibold;
+}
+
+.inline {
+    display: inline;
+}
+
+.text-white h6 {
+    font-family: poppins-regular;
+    margin: 10px 0;
+}
+
+.wid-20 {
+    width: 20%;
+    float: left;
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+.wid-80 {
+    width: 80%;
+    float: left;
+}
+
+hr {
+    width: 95%;
+}

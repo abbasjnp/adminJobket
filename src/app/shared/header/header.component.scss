@@ -1,0 +1,11 @@
+.logo {
+    height: 53px;
+    width: 200px;
+    background-color: red;
+    background-image: linear-gradient(to bottom right, #fda408, #e43302);
+}
+
+.logo,
+img {
+    margin-top: -3px;
+}

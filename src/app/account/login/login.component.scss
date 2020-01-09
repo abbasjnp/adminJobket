@@ -1,0 +1,217 @@
+.background {
+    background: url("./../../../assets/images/login.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .miniBackground {
+    background: white;
+    background-size: cover;
+    border-radius: 8px;
+    width: 75%;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .Page {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .Account {
+    display: -webkit-inline-box;
+  }
+  
+  .logo {
+    display: flex;
+    margin-left: 39%;
+    margin-right: 39%;
+    margin-top: 2vh;
+  }
+  
+  .colsSize {
+    margin: 0%;
+    width: 100%;
+  }
+  
+  .txt {
+    text-align: center;
+    font-weight: 730;
+  }
+  
+  .Paragraph {
+    color: gray;
+    text-align: center;
+    width: 104%;
+  }
+  
+  .Input-Black {
+    padding-top: 4px;
+    height: 74px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    border: 2px solid black;
+    -webkit-transform: skew(-10deg);
+    transform: skew(-10deg);
+    color: black;
+    margin-bottom: 12px;
+  }
+  
+  .Input-Gray {
+    height: -webkit-fill-available;
+    border-radius: 5px;
+    background: white;
+    border-bottom: 5px solid rgb(238, 234, 234);
+    background-color: white;
+    border-right: 5px solid rgb(238, 234, 234);
+    border-top: 0px;
+    border-left: 0px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    margin: 4px;
+  }
+  
+  .form-control {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    display: flex;
+    width: 96%;
+    height: 46px;
+    border: none;
+    transform: skew(10deg);
+    color: black;
+    background: rgb(238, 234, 234);
+    font-size:17px;
+    
+  }
+  .form-control::placeholder {
+   // color: black !important;
+    // size: 17px !important;
+    font-size:17px;
+    font-family: Poppins-Regular;
+  }
+  
+  .form-control:focus {
+    border-color: rgb(238, 234, 234) !important;
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+  
+  .gray{
+    background: rgb(238, 234, 234);
+    width: 93%;
+    margin: auto;
+    margin-top: 5px;
+  }
+
+  textarea:focus, input:focus{
+    outline: none;
+}
+  .error-input{border:2px solid red; transform: skew(-10deg);border-radius: 5px;}
+  
+  .loginBtn {
+    display: flex;
+    height: 58px;
+    border-radius: 5px;
+    width: 100%;
+    align-items: center;
+    border: 2px solid black;
+    transform: skew(-10deg);
+    color: white;
+    justify-content: center;
+    background-image: linear-gradient(to left, #2fca08, #037521);
+    margin-top: -20px;
+  }
+
+  .login{
+    transform: skew(10deg);
+    background: none;
+    border: none;
+    font-size: 16px;
+    font-family: Poppins-regular;
+    width: inherit;
+    height: inherit;
+  }
+  
+  .txt2 {
+    text-align: center;
+    width: 34%;
+    margin-left: 22vh;
+    display: -webkit-inline-box;
+  }
+  
+  .rightShift {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5%;
+    color: dodgerblue;
+    font-size: 18px;
+    font-family: Poppins-regular;
+  }
+  .need{
+    font-size: 17px;
+    font-family: Poppins-regular;
+  }
+  .s1{
+    margin-top: 60px;
+    text-align: center;
+  }
+  .need span{
+   color:dodgerblue;
+  } 
+  
+  label {
+    display: inline-block;
+    max-width: 100%;
+   
+    margin-bottom: 9px;
+    margin-left: 3%;
+    letter-spacing: 0.5px;
+    
+  }
+  label img{
+    margin-right: 15px;
+    width: 23px;
+  }
+  
+  @media screen and (min-width:320px) and (max-width:768px) {
+    .colsSize {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: auto;
+    }
+  
+    .miniBackground{
+      height: auto;
+    }
+  }
+  
+  @media screen and (min-width:768px) and (max-width:4320px) {
+    .colsSize {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+    .miniBackground{
+      width:70;
+    }
+    .container{
+      width: 100%;
+      padding: inherit;
+    }
+  }
+  
+

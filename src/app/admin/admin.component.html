@@ -1,0 +1,20 @@
+<!-- <h2>Welcome to Admin Page !!!!!!!!!!!!!!!</h2>
+
+<button class="generate-csv" (click)="generateCsv()">
+    Generate CSV
+  </button> -->
+
+
+<div class="wrapper">
+    <app-header [alerts]="alerts" [alertCount]="alertCount" (markAsRead)="markAsRead($event)"></app-header>
+    <app-sidebar [navs]="navs">
+        test
+    </app-sidebar>
+
+    <div id="content">
+        <router-outlet></router-outlet>
+        <!-- <div class="footer">
+            © 2019 Asap Jobket Admin
+        </div> -->
+    </div>
+</div>

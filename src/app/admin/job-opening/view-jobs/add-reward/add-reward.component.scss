@@ -1,0 +1,84 @@
+.form-group {
+    margin-bottom: 15px;
+    margin: 4px;
+}
+
+.Input-Black {
+    padding-top: 4px;
+    height: 74px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    border: 2px solid black;
+    -webkit-transform: skew(-10deg);
+    transform: skew(-10deg);
+    color: black;
+    margin-bottom: 12px;
+}
+
+.Input-Gray {
+    height: -webkit-fill-available;
+    border-radius: 5px;
+    background: white;
+    border-bottom: 5px solid #eeeaea;
+    background-color: white;
+    border-right: 5px solid #eeeaea;
+    border-top: 0px;
+    border-left: 0px;
+}
+
+.gray {
+    background: #eeeaea;
+    width: 93%;
+    margin: auto;
+    margin-top: 5px;
+}
+
+.form-control {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    display: flex;
+    width: 96%;
+    height: 46px;
+    border: none;
+    -webkit-transform: skew(10deg);
+    transform: skew(10deg);
+    color: black;
+    background: #eeeaea;
+    font-size: 17px;
+}
+
+.btn-contact {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: poppins-semibold;
+    color: #fff;
+    -webkit-transform: skewX(-8deg);
+    transform: skewX(-8deg);
+    background-image: linear-gradient(to right, #1c814f, #0ea042);
+    border: 2px solid #000000;
+    box-shadow: inset -2px -2px 0px 2px #127c37;
+    -moz-box-shadow: inset -2px -2px 0px 2px #127c37;
+    -webkit-box-shadow: inset -2px -2px 0px 2px #127c37;
+}
+
+.btn-contact button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+}
+
+.cancel-btn {
+    position: relative;
+    right: 0;
+    top: -81px;
+    float: right;
+    background-color: antiquewhite;
+    padding: 3px;
+    border-radius: 50%;
+}

@@ -1,0 +1,41 @@
+<section>
+    <div class="">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Add Reward</h2>
+            </div>
+            <span class="cancel-btn"><i class="fa fa-times" (click)="onNoClick()"></i></span>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form" [formGroup]="form">
+                    <div class="form-group">
+                        <label for="refreward"><i class="fa fa-rupee-sign"></i> Refferal Reward</label>
+                        <div class="Input-Black ">
+                            <div class="Input-Gray email">
+                                <div class="gray">
+                                    <input class="form-control" type="text" formControlName="reffralReward" name="reffralReward" id="reffralReward" placeholder="Enter Refral Reward">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="refreward"><i class="fa fa-rupee-sign"></i> Hiring Reward</label>
+                        <div class="Input-Black ">
+                            <div class="Input-Gray email">
+                                <div class="gray">
+                                    <input class="form-control" type="text" formControlName="hiringReward" name="hiringReward" id="hiringReward" placeholder="Enter Hiring Reward">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="btn-contact">
+                            <button type="button" (click)="addReward();">Add </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

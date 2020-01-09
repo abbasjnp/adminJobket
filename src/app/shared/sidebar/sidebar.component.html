@@ -1,0 +1,40 @@
+<nav id="sidebar" class="bg-dark">
+    <ul class="list-unstyled components">
+        <li>
+            <a>
+                <img class="icon-img marign-lt5px" /> NAVIGATION
+            </a>
+        </li>
+        <li *ngFor="let nav of navs">
+            <a *ngIf="nav.subNavs.length > 0 || nav.url === '' || !nav.enable" class="dropdown-btn">
+                <img class="icon-img marign-lt5px" src="{{ nav.icon }}" /> {{ nav.title }}
+                <i style="margin-left:10px" class="fa fa-caret-down"></i>
+            </a>
+            <div class="dropdown-container">
+                <ul>
+                    <li *ngFor="let subnav of nav.subNavs">
+                        <a routerLink="{{ subnav.url }}"> {{ subnav.title }}</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- <a
+      *ngIf="nav.subNavs.length > 0 || nav.url === '' || !nav.enable"
+      class="dropdown-btn"
+    >
+      <img class="icon-img marign-lt5px" src="{{ nav.icon }}" />
+      {{ nav.title }}
+      <i style="margin-left:60px" class="fa fa-caret-down"></i>
+    </a>
+    <div class="dropdown-container">
+      <ul>
+        <li *ngFor="let subnav of nav.subNavs">
+          <a routerLink=""> {{ subnav.title }}</a>
+        </li>
+      </ul>
+    </div> -->
+            <a class="{{nav.class}}" *ngIf="nav.subNavs.length == 0 && nav.enable" routerLink="{{ nav.url }}">
+                <img class="icon-img marign-lt5px" src="{{ nav.icon }}" /> {{ nav.title }}
+            </a>
+        </li>
+    </ul>
+</nav>

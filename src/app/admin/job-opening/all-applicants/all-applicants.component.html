@@ -1,0 +1,132 @@
+<section class="content-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li style="color:black;">
+                        <i class="fa fa-home"></i>
+                        <a href="#">Dashboard </a>
+                    </li>
+                    <li style="color:black;"><a href="#">Job Opening </a></li>
+                    <li style="color:black;"><a href="#">Job Id: {{jobInfoId}}</a></li>
+                    <li style="color:#e43302">All Applicants</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="ptb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="employee-header">
+                    <h2>All Applicants</h2>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="right">
+                    <!-- <button type="button" class="filter-from-input-box-button"><img src="../../../../assets/icons/filter.png"> Filter</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="mtb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                    <ng-container matColumnDef="cname">
+                        <mat-header-cell *matHeaderCellDef> Candidate Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.fullname}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="email">
+                        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="contactus">
+                        <mat-header-cell *matHeaderCellDef> Contact Us </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.contactnumber}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Experience">
+                        <mat-header-cell *matHeaderCellDef> Experience </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            {{element.experience}}
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="applydate">
+                        <mat-header-cell *matHeaderCellDef> Apply Date </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.appliedat}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="notice_period">
+                        <mat-header-cell *matHeaderCellDef> Notice Period </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.notice_period}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="salary">
+                        <mat-header-cell *matHeaderCellDef> Salary</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.salary}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="referred_by_name">
+                        <mat-header-cell *matHeaderCellDef>Referred By Name</mat-header-cell>
+                        <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                            <a (click)="applyJob(element.referred_by_id)">{{element.referred_by_name}}</a>
+                            <a *ngIf="element.referred_by_id==null && element.referred_by_name==null" (click)="applyJob(element.referred_by_id)"></a>
+                            <a *ngIf="element.referred_by_id !=null && element.referred_by_name==null" (click)="applyJob(element.referred_by_id)">No Name</a>
+                        </mat-cell>
+                    </ng-container>
+                    <!-- <ng-container matColumnDef="referred_by_name">
+                        <mat-header-cell *matHeaderCellDef> Referred By Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.referred_by_name}} </mat-cell>
+                        <a (click)="applyJob(element.referred_by_id)">{{element.referred_by_name}}</a>
+                        <a *ngIf="element.referred_by_name==null" (click)="applyJob(element.referred_by_id)">No Name</a>
+                    </ng-container> -->
+                    <ng-container matColumnDef="question1">
+                        <mat-header-cell *matHeaderCellDef> Question1 </mat-header-cell>
+                        <mat-cell *matCellDef="let element" matTooltip={{element.question_and_answers[0]?.question}} matTooltipPosition="above">
+                            {{element.question_and_answers[0]?.answer}}
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="question2">
+                        <mat-header-cell *matHeaderCellDef> Question2 </mat-header-cell>
+                        <mat-cell *matCellDef="let element" matTooltip={{element.question_and_answers[1]?.question}} matTooltipPosition="above">
+                            {{element.question_and_answers[1]?.answer}}
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="status">
+                        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+                        <!-- <mat-cell *matCellDef="let element"> {{element.applicantstatus}} </mat-cell> -->
+                        <mat-cell *matCellDef="let element">
+                            <mat-select [(value)]="element.applicantstatus" (selectionChange)="changeStatus($event,element)">
+                                <mat-option value="Applied">Applied</mat-option>
+                                <mat-option value="Rejected">Rejected</mat-option>
+                                <mat-option value="Moving Forward">Moving Forward</mat-option>
+                                <mat-option value="Hired">Hired</mat-option>
+                            </mat-select>
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="resume">
+                        <mat-header-cell *matHeaderCellDef>Resume</mat-header-cell>
+                        <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                            <a (click)="downloadResume(element)">download resume</a>
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="view-resume">
+                        <mat-header-cell *matHeaderCellDef>View Resume</mat-header-cell>
+                        <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                            <a (click)="viewResume(element.id)">view resume</a>
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns | paginate: { itemsPerPage: 13, currentPage: page, totalItems: totalPages*10 }"></mat-row>
+
+                </mat-table>
+                <div class="pagination">
+                    <pagination-controls (pageChange)="pageChange($event)"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

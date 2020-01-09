@@ -1,0 +1,108 @@
+<div *ngIf="data.type=='addCarousalData'">
+<!-- <div> -->
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="job-information">
+        <h3>Add Job Carosaul</h3>
+        <span class="job-information-span"></span>
+      </div>
+      <span (click)="onNoClick()" class="cancel-dialog"><i class="fa fa-close"></i></span>
+    </div>
+  </div>
+  <br>
+  <form [formGroup]="form">
+    <div class="form-froup contact-from-box">
+      
+      <input type="text" class="contact-form-control" placeholder="Enter Job Id" formControlName="jobId">
+    </div>
+    <div class="form-froup contact-from-box">
+     
+      <input type="text" class="contact-form-control" placeholder="Enter Slider Title" formControlName="title">
+    </div>
+
+    <!-- <div class="form-froup contact-from-box">
+      <textarea  class="txt-area" placeholder="Enter description">
+        
+        </textarea>
+    </div> -->
+    
+    <input style="display: none" type="file" #fileInput (change)="uploadImage($event)">
+    <div class="row">
+      <div class="col-md-4">
+        <button type="button" class="btn-upload" (click)="fileInput.click()">Upload Photo</button><br>
+        <h6>Required image must be size 1400x400
+        </h6>
+        <!-- <ng-container *ngIf="uploadSuccess">
+         
+          The image height is : {{height}} <br>
+          The image width is : {{width}} <br>
+        </ng-container>  -->
+      </div>
+      <div class="col-md-8">
+        <img *ngIf="imagePreview" [src]="imagePreview" width="200px" height="200px">
+      </div>    
+    </div> 
+    <!-- <div mat-dialog-actions class="btn-primary-1">
+      <button mat-button  (click)="submitDialog(0)" cdkFocusInitial class="mat-raised-button mat-accent">Submit 
+        <img src="../../../../assets/images/right-arrow.png" alt="">
+       </button>
+    </div> -->
+
+    <div class="btn-primary-1 mr-12 txt-center mt" (click)="submitDialog(0)">
+        <a  class="btn-1 btn" >Submit 
+          <img src="../../../../assets/images/right-arrow.png" alt="">
+        </a>
+      </div>
+     
+  </form>
+</div>
+
+<div *ngIf="data.type=='editCarousalData'">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="job-information">
+        <h3>Edit Job Carosaul</h3>
+        <span class="job-information-span"></span>
+      </div>
+      <span (click)="onNoClick()" class="cancel-dialog"><i class="fa fa-close"></i></span>
+    </div>
+  </div>
+  <br>
+  <form [formGroup]="form">
+      <h5> Job Id</h5>
+    <div class="form-froup contact-from-box">
+      <!-- <span class="inline">
+        <img src="../../../assets/icons/contact person.png" alt="..">
+      </span> -->
+      <input type="text" class="contact-form-control" placeholder="Enter Job Id" formControlName="jobId">
+    </div>
+    <h5>Slider Title</h5>
+    <div class="form-froup contact-from-box">
+      <!-- <span class="inline">
+        <img src="../../../assets/icons/contact person.png" alt="..">
+      </span> -->
+      <input type="text" class="contact-form-control" placeholder="Enter Slider Title" formControlName="title">
+    </div>
+    <!-- <div class="form-froup contact-from-box">
+      <textarea  class="txt-area" placeholder="Enter description" formControlName="description">
+        
+        </textarea>
+    </div> -->
+    <input style="display: none" type="file" #fileInput (change)="uploadImage($event)">
+    <div class="row">
+      <div class="col-md-4">
+        <button type="button" class="btn-upload" (click)="fileInput.click()">Change Photo</button><br>
+        <h6>Required image must be size 1400x400
+        </h6>
+      </div>
+      <div class="col-md-8">
+        <img *ngIf="imagePreview" [src]="imagePreview" width="200px" height="200px">
+      </div>    
+    </div> 
+    <div class="btn-primary-1 mr-12 txt-center mt" (click)="submitDialog(data.data.id)">
+      <a  class="btn-1 btn" >Submit 
+        <img src="../../../../assets/images/right-arrow.png" alt="">
+      </a>
+    </div>
+  </form>
+</div>

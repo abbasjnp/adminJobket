@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-sm-12">
+        <p class="heading">Show Hyperhire Points</p>
+        <div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-bordered table-striped">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Criteria</th>
+                                <th>Yes / No</th>
+                            </tr>
+                        </thead>
+                        <tr *ngFor="let data of showHyperHireData; let i=index">
+                            <td class="TextFont">{{data.rule}}</td>
+                            <td class="TextFont" *ngIf="data.result == true"><i class="fa fa-check" style="font-size:12px;color:green"></i></td>
+                            <td class="TextFont" *ngIf="data.result == false"><i class="fa fa-times" style="font-size:12px;color:red"></i></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

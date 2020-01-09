@@ -1,0 +1,125 @@
+.heading {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.GrayBorder {
+    margin-top: 5px;
+    border: 2px solid #f5f3f3;
+    width: 93%;
+    height: 54px;
+    padding: 6px 6px 6px 6px;
+    border-radius: 6px;
+}
+
+.GrayBackground {
+    background: rgb(245, 243, 243);
+    width: 100%;
+    height: 38px;
+    border-radius: 6px;
+}
+
+.DropDownMenu {
+    margin-left: 10px;
+    width: 95%;
+    height: inherit;
+    background: none;
+    border: none;
+}
+
+.DIF {
+    display: flex;
+}
+
+.Table {
+    width: 100%;
+}
+
+tr {
+    height: 40px;
+    border: 2px;
+    border-bottom: 2px solid rgb(245, 243, 243);
+    line-height: 40px;
+}
+
+.skillBtnBack {
+    background: #FFE5DB;
+    width: 93%;
+    border-radius: 5px
+}
+
+.skillBtn {
+    width: 100%;
+    height: 40px;
+    color: #eb5000;
+    background: none;
+    border: none;
+}
+
+.WD {
+    width: 100%;
+    margin: 0 7px;
+}
+
+td {
+    font-size: 13px;
+}
+
+.Mg {
+    margin: 2px;
+}
+
+.fa-times:before {
+    content: "\f00d";
+    font-size: 22px;
+    margin: 0px 0px 0px 6px;
+}
+
+.inline {
+    display: inline-flex;
+}
+
+.paddingRadio {
+    padding: 0px;
+}
+
+.btn-add {
+    position: absolute;
+    right: 23px;
+    top: 93px;
+    height: 40px;
+    width: 36px;
+    background-color: #ffe5db;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn-add1 {
+    position: relative;
+    right: -6px;
+    top: -47px;
+    float: right;
+    height: 40px;
+    width: 36px;
+    background-color: #ffe5db;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn-remove {
+    position: relative;
+    right: -7px;
+    top: 0;
+    float: right;
+    height: 40px;
+    width: 36px;
+    background-color: #ffe5db;
+    border: none;
+    border-radius: 10px;
+}
+
+.btn-head {
+    margin-top: -39px;
+    width: 16%;
+    float: right;
+}

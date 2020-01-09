@@ -1,0 +1,67 @@
+.circle {
+    display: inline-flex;
+    border-radius: 5px;
+    width: 100%;
+    background: white;
+}
+
+.MarginP {
+    margin-left: 5%;
+    // margin-right: 11%;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-size: small;
+    font-family: Poppins-regular;
+}
+
+.cardContent {
+    margin-top: 4px;
+    margin-bottom: 10px;
+    width: 85%;
+    color: white;
+    display: flex;
+    align-items: center;
+    height: 154px;
+    border-radius: 8px;
+}
+
+.card-content {
+    font-size: 10px;
+    color: white;
+}
+
+select {
+    border: 0;
+    outline: 0;
+}
+
+select option[data-default] {
+    color: #888;
+    font-size: 12px;
+}
+
+.heading {
+    font-size: 17px;
+    font-style: Poppins-Regular;
+    font-weight: 500;
+    margin-top: 14px;
+}
+
+.heading1 {
+    font-size: 14px;
+    font-style: Poppins-Regular;
+    font-weight: 500;
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.9;
+}

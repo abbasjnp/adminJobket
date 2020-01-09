@@ -1,0 +1,116 @@
+<section class="content-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li style="color:black;">
+                        <i class="fa fa-home"></i>
+                        <a href="#">Dashboard </a>
+                    </li>
+                    <li style="color:#e43302">Fasting Plan</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- <section class="ptb-20">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-3">
+              <div class="employee-header">
+                  <h2>All Employee</h2>
+              </div>
+          </div>
+          <div class="col-md-3">
+              <mat-form-field>
+                  <mat-label>Sort By</mat-label>
+                  <mat-select [(value)]="selected" (selectionChange)="sortByTableData($event)">
+                      <mat-option value="1" selected>Descending</mat-option>
+                      <mat-option value="0">Ascending</mat-option>
+                  </mat-select>
+
+              </mat-form-field>
+          </div>
+          <div class="col-md-6">
+              <div class="search-1">
+                  <input class="form-control" #box (keyup.enter)="searchData()" [(ngModel)]="searchText" placeholder="Search By JobSeekar ID And Email ID....">
+                  <button class="btn btn-search" (click)="searchData()"><i class="fa fa-search"></i></button>
+                  <button (click)="getEmployeeData()" type="button" class="filter-from-input-box-button"> Download Data</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</section> -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <!-- Fasting-Hours Column -->
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="title">
+                        <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="fasting_hours">
+                        <mat-header-cell *matHeaderCellDef> Fasting Hours </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.fasting_hours}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="normal_hours">
+                        <mat-header-cell *matHeaderCellDef> Normal Hours </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.normal_hours}} </mat-cell>
+                    </ng-container>
+
+
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="contact_number">
+                        <mat-header-cell *matHeaderCellDef> Contact Number </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.contact_number}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="notice_period">
+                        <mat-header-cell *matHeaderCellDef> Notice Period </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.notice_period}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="salary">
+                        <mat-header-cell *matHeaderCellDef> Salary </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.salary}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="location">
+                        <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="hyperhire_points">
+                        <mat-header-cell *matHeaderCellDef> Hyper Point </mat-header-cell>
+                        <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                            <a (click)="openDialoghyperPointDetails(element)">{{element.hyperhire_points.given_points}}{{slash}}{{element.hyperhire_points.total_points}}
+                            </a>
+                        </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Action">
+                        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+                        <mat-cell *matCellDef="let element" (click)="$event.stopPropagation()">
+                            <button mat-button (click)="openDialog(element.id)" class="primair">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                            <button mat-button (click)="openDialog(element.id)" class="primair">
+                                <i class="fa fa-trash"></i>
+                            </button>
+            
+                        </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns "></mat-header-row>
+                    <mat-row
+                        *matRowDef="let row; columns: displayedColumns | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalPages*10 } "
+                        (click)="applyJob(row.id) ">
+                    </mat-row>
+                </mat-table>
+                <div class="pagination ">
+                    <pagination-controls (pageChange)="pageChange($event) "></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

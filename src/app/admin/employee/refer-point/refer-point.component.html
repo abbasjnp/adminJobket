@@ -1,0 +1,198 @@
+<!-- <section class="content-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li style="color:black;">
+                        <i class="fa fa-home"></i>
+                        <a href="#">Dashboard </a>
+                    </li>
+                    <li style="color:#000">Employee</li>
+                    <li style="color:#e43302">Employee Id: #54545</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- <section class="ptb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="employee-header">
+                    <h2>Employee Id: #65844</h2>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="">
+                    <button type="button" class="login-from-input-box-light wid-btn"><i class="fa fa-eye"></i> View Full Resume</button>
+                    <button type="button" class="filter-from-input-box-button wid-btn"><i class="fa fa-download"></i> Download Resume</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- <section>
+    <div class="container">
+        <div class="card-company">
+            <div class="card-companybody">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="my-profile-img">
+                            <img src="../../../../assets/images/ot1.jpg" alt="..">
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <div class="row border-bottom">
+                            <div class="col-sm-6">
+                                <div class="text-white">
+                                    <h3>Abhishek Kumar</h3>
+                                    <p>Senior Product Designer at Innotical Solutions Pvt. Ltd.</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-white">
+                                    <span class="inline ">
+                            Profile Strength (Excellent)
+                        </span>
+                                    <span class="pull-right mt-0">100%</span>
+                                    <div class="progress md-progress">
+                                        <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="text-white">
+                                    <div class="wid-50">
+                                        <h6>Experience :</h6>
+                                    </div>
+                                    <div class="wid-50">
+                                        <h5>3 Year 2 Months</h5>
+                                    </div>
+                                    <div class="wid-50">
+                                        <h6>Location :</h6>
+                                    </div>
+                                    <div class="wid-50">
+                                        <h5>Noida</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="text-white">
+                                    <div class="wid-50">
+                                        <h6>Contact Number :</h6>
+                                    </div>
+                                    <div class="wid-50">
+                                        <h5>9595959599</h5>
+                                    </div>
+                                    <div class="wid-50">
+                                        <h6>Email-Id :</h6>
+                                    </div>
+                                    <div class="wid-50">
+                                        <h5>abnj@gmail.com</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="text-white">
+                                    <div class="wid-50">
+                                        <h6>Alternate Contact Number :</h6>
+                                    </div>
+                                    <div class="wid-50">
+                                        <h5>+91 9595959595</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<!-- <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div>
+                    <button type="button" class="filter-from-input-box-button wid-btn"> Job Applied</button>
+                    <button type="button" class="login-from-input-box-light wid-btn"> Refer Point</button>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="right">
+                    <button type="button" class="login-from-input-box-light"><img src="../../../../assets/icons/filterblack.png"> Filter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<section class="mtb-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                    <!-- <ng-container matColumnDef="WithdrawlRequest">
+                        <mat-header-cell *matHeaderCellDef> Withdrawl Request </mat-header-cell>
+                        <mat-cell (click)="referPoints()" *matCellDef="let element"> {{element.WithdrawlRequest}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="UserName">
+                        <mat-header-cell *matHeaderCellDef> User Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.UserName}} </mat-cell>
+                    </ng-container> -->
+                    <ng-container matColumnDef="CompanyName">
+                        <mat-header-cell *matHeaderCellDef> Company Name </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.company_name}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="job_id">
+                        <mat-header-cell *matHeaderCellDef>Job ID</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.job_id}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Titlejob">
+                        <mat-header-cell *matHeaderCellDef> Title of Job </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.job_title}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Designation">
+                        <mat-header-cell *matHeaderCellDef> Designation </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.designation}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Refdatetime">
+                        <mat-header-cell *matHeaderCellDef> Referal Date &amp; Time </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.refrred_at}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Location">
+                        <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="RefStatus">
+                        <mat-header-cell *matHeaderCellDef> Refer Status </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="Action" *ngIf="false">
+                        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+                        <mat-cell *matCellDef="let element" class="paid"> {{element.paid_status}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="hirring_reward">
+                        <mat-header-cell *matHeaderCellDef>Hirring Reward</mat-header-cell>
+                        <mat-cell *matCellDef="let element" class="paid"> {{element.hirring_point_status}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="referral_reward">
+                        <mat-header-cell *matHeaderCellDef> Referral Reward </mat-header-cell>
+                        <mat-cell *matCellDef="let element" class="paid"> {{element.referral_point_status}} </mat-cell>
+                    </ng-container>
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns | paginate: { itemsPerPage: 10, currentPage: page, totalItems: totalPages*10 }">
+                    </mat-row>
+                </mat-table>
+
+                <div class="pagination">
+                    <pagination-controls (pageChange)="pageChange($event)"></pagination-controls>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

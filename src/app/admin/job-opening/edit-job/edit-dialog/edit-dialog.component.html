@@ -1,0 +1,523 @@
+<!-- ===============================Job Information====================================== -->
+<div mat-dialog-content>
+
+    <div *ngIf="data.type=='jobInformation'">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="job-information">
+                    <h3>Job Information</h3>
+                    <span class="job-information-span"></span>
+                </div>
+                <span (click)="onNoClick()" class="cancel-dialog"><i class="fa fa-close"></i></span>
+            </div>
+        </div>
+        <br>
+        <label for="titleOfPosition">Title of Position:</label>
+        <div class="form-froup contact-from-box">
+            <span class="inline">
+                <img src="../../../../assets/icons/contact person.png" alt="..">
+            </span>
+            <input type="text" class="contact-form-control" placeholder="Title of Position" [formControl]="titlePosition">
+        </div>
+        <label for="minimumExperience">Minimum Experience:</label>
+        <div class="form-froup contact-from-box">
+            <span class="inline">
+                <img src="../../../../assets/icons/experience.png" alt="..">
+            </span>
+            <select form class="contact-form-control" name="minexp" [formControl]="minExp">
+                <option>Minimum Experience</option>
+                <option value="0">0 Year</option>
+                <option value="1">1 Year</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+                <option value="4">4 Years</option>
+                <option value="5">5 Years</option>
+                <option value="6">6 Years</option>
+                <option value="7"> 7 Years</option>
+                <option value="8">8 Years</option>
+                <option value="9">9 Years</option>
+                <option value="10">10 Years</option>
+                <option value="11">11 Years</option>
+                <option value="12">12 Years</option>
+                <option value="13">13 Years</option>
+                <option value="14">14 Years</option>
+                <option value="15">15 Years</option>
+                <option value="16">16 Years</option>
+                <option value="17">17 Years</option>
+                <option value="18">18 Years</option>
+                <option value="19">19 Years</option>
+                <option value="20">20 Years</option>
+            </select>
+        </div>
+        <label for="maximumExperience">Maximum Experience:</label>
+        <div class="form-froup contact-from-box">
+            <span class="inline">
+                <img src="../../../../assets/icons/experience.png" alt="..">
+            </span>
+            <select class="contact-form-control" name="maxexp" [formControl]="maxExp">
+                <option>Maximum Experience</option>
+                <option value="1">1 Year</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+                <option value="4">4 Years</option>
+                <option value="5">5 Years</option>
+                <option value="6">6 Years</option>
+                <option value="7"> 7 Years</option>
+                <option value="8">8 Years</option>
+                <option value="9">9 Years</option>
+                <option value="10">10 Years</option>
+                <option value="11">11 Years</option>
+                <option value="12">12 Years</option>
+                <option value="13">13 Years</option>
+                <option value="14">14 Years</option>
+                <option value="15">15 Years</option>
+                <option value="16">16 Years</option>
+                <option value="17">17 Years</option>
+                <option value="18">18 Years</option>
+                <option value="19">19 Years</option>
+                <option value="20">20 Years</option>
+            </select>
+        </div>
+        <label for="minimumSalary">Minimum Salary:</label>
+        <div class="form-froup contact-from-box">
+            <span class="inline">
+                <i class="fa fa-rupee-sign"></i>
+            </span>
+            <select class="contact-form-control" (change)="selectMinSallary($event)" [formControl]="minSalary">
+                <option>Minimum salary</option>
+                <option *ngFor="let sal of maxSalaryDialog" [value]="sal.value">
+                    {{sal.name}}
+                </option>
+            </select>
+        </div>
+        <label for="maximumSalary">Maximum Salary:</label>
+        <div class="form-froup contact-from-box">
+            <span class="inline">
+                <i class="fa fa-rupee-sign"></i>
+            </span>
+            <select class="contact-form-control" [formControl]="maxSalary">
+                <option>Maximum salary</option>
+                <option *ngFor="let sal of maxSalaryArray" [value]="sal.value">
+                    {{sal.name}}
+                </option>
+            </select>
+        </div>
+        <label for="jobType">Employement Type:</label>
+        <div class="form-froup contact-from-box">
+            <span class="inline">
+                <img src="../../../assets/icons/contact person.png" alt="..">
+            </span>
+            <select (change)="ChangingValue(5,$event)" name="jobsType" class="contact-form-control" [formControl]="job_type">
+                <option [value]="null" disabled>Employement Type</option>
+                <option *ngFor="let jobsType of jobType" [value]="jobsType.value">
+                    {{jobsType.name}}
+                </option>
+            </select>
+        </div>
+        <label for="jobLocation">Job Location:</label>
+        <div class="form-froup contact-from-box">
+            <span class="inline">
+                <img src="./../../../../assets/icons/address.png" alt="..">
+            </span>
+            <input type="text" [formControl]="location" class="contact-form-control" placeholder="Location" [matAutocomplete]="auto1">
+            <mat-autocomplete #auto1="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let option of locations" [value]="option">
+                    {{option.location}}
+                </mat-option>
+            </mat-autocomplete>
+        </div>
+        <!-- =============Edit Category and Sub-Category=================== -->
+        <label for="category">Category:</label>
+        <div class="form-froup contact-from-box">
+            <span class="inline">
+                <img src="../../../../assets/icons/experience.png" alt="..">
+            </span>
+            <select form class="contact-form-control" (change)="catValue($event)" name="category" [formControl]="category">
+                <option [value]="null" disabled>Category</option>
+                <option *ngFor="let cat of categoryList" [value]="cat.id">
+                    {{cat.name}}
+                </option>
+            </select>
+        </div>
+        <label for="subCategory">Sub Category:</label>
+        <div class="form-froup contact-from-box">
+            <span class="inline">
+                <img src="../../../../assets/icons/experience.png" alt="..">
+            </span>
+            <select class="contact-form-control" (change)="subCatValue($event)" name="sub_category" [formControl]="sub_category">
+                <option [value]="null" disabled>Sub-Category</option>
+                <option *ngFor="let subCat of subCategoryList" [value]="subCat.id">
+                    {{subCat.name}}
+                </option>
+            </select>
+        </div>
+        <div class="row ">
+            <div class="col-sm-3">
+                <label for="salaryDescription" class="continuousrecruitment">Continuous Recruitment :-</label>
+
+            </div>
+            <div class="col-sm-3">
+                <input type="checkbox" id="piscine" [(ngModel)]="checked" name="piscine" (change)="handleSelected($event)">
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <label for="salaryDescription">Salary Description:</label>
+        <div class="form-froup">
+            <div class=" contact-from-box">
+                <span class="inline">
+                    <!-- <img src="../../../../assets/icons/message.png" alt=".."> -->
+                </span>
+                <!-- <textarea placeholder="About Job Role" class="contact-form-text-area text-area-1" [formControl]="aboutRole"></textarea> -->
+                <ckeditor tagName="textarea" [formControl]="salary_description" class="contact-form-text-area text-area-1" required></ckeditor>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================skills======================= -->
+
+    <div *ngIf="data.type=='skills'">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="job-information">
+                    <h3>Skills</h3>
+                    <span class="job-information-span"></span>
+                </div>
+            </div>
+            <span (click)="onNoClick()" class="cancel-dialog"><i class="fa fa-close"></i></span>
+        </div>
+        <br>
+        <div class="row  ">
+            <div class=" " *ngFor="let skill of skillList">
+                <div class="form-froup wid-13 ">
+                    <div class="inline-block">
+                        <!-- mat Chips     value binding  -->
+                        <div class="inline-block">
+                            <h5 class="skill">{{skill}}</h5>
+                        </div>
+                        <span class="inline" (click)="removeSkill(i)">
+                            <i class="fa fa-close" style="font-size:16px;color:red;margin-left:10px"></i>
+                        </span>
+                        <!-- <input type="text" class="contact-form-control"> -->
+                    </div>
+                    <!-- <span class="inline">
+            <img src="../../../assets/icons/select1.png" alt="..">
+          </span> -->
+                </div>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="form-froup contact-from-box">
+                    <span class="inline">
+                        <i class="fa fa-cogs"></i>
+
+                    </span>
+                    <input (keyup.enter)="addSkill(getSkill.value)" id="clearSkill" type="text" #getSkill [formControl]="skill" [(ngModel)]="showSkill" name="skills" class="contact-form-control" placeholder="Search the skills you have" [matAutocomplete]="auto2">
+                    <mat-autocomplete #auto2="matAutocomplete">
+                        <mat-option *ngFor="let option of skills" [value]="option.skill">
+                            {{option.skill}}
+                        </mat-option>
+                    </mat-autocomplete>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="btn-contact" (click)="addSkill(getSkill.value)">
+                    <button type="button">
+                        <img src="../../../../assets/icons/add.png" alt="..">
+                        Add New Skill
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ========================description============================= -->
+
+    <div *ngIf="data.type=='description'">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="job-information">
+                    <h3>Roles & Responsibilities</h3>
+                    <span class="job-information-span"></span>
+                </div>
+            </div>
+            <span (click)="onNoClick()" class="cancel-dialog"><i class="fa fa-close"></i></span>
+        </div>
+        <br>
+        <div class="col-sm-12 col-xs-12">
+            <div class="form-froup contact-from-box">
+                <span class="inline">
+                    <img src="../../../../assets/icons/message.png" alt="..">
+                </span>
+                <!-- <textarea placeholder="Job Description" class="contact-form-text-area text-area-1" [formControl]="description"></textarea> -->
+                <ckeditor tagName="textarea" [formControl]="description" class="contact-form-text-area text-area-1" required></ckeditor>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="data.type=='requirement'">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="job-information">
+                    <h3>Required Qualification</h3>
+                    <span class="job-information-span"></span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div class="row" *ngFor="let item of inputArray;let i=index">
+                <div class="col-sm-10 col-xs-10">
+                    <div class="form-froup contact-from-box">
+                        <div class="inline-block">
+                            <input (keyup)="onKey($event,i)" type="text" name="requirement" class="contact-form-control" placeholder="Job Requirement" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-2">
+                    <div class="mar-19 pdlr-32">
+                        <span>
+                            <img (click)="removeInput(i)" src="../../../../assets/icons/cross.png" alt="..">
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="inline-block" style="position: absolute;
+        right: 435px;margin-top: -48px;">
+                <img (click)="addInput()" src="../../../../assets/icons/add-1.png" alt="..">
+            </div>
+        </div>
+
+        <!-- <div class="row ">
+      <div class="col-sm-10 col-xs-10">
+        <div class="form-froup contact-from-box">
+          <div class="inline-block" *ngFor="let row of jobRequirements">
+            <textarea placeholder="Job Description" class="contact-form-text-area" [formControl]="jobRequirements"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </div> -->
+    </div>
+    <div *ngIf="data.type=='editSingleRequirement'">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="job-information">
+                    <h3>Required Qualification</h3>
+                    <span class="job-information-span"></span>
+                </div>
+                <span (click)="onNoClick()" class="cancel-dialog"><i class="fa fa-close"></i></span>
+            </div>
+        </div>
+        <br>
+
+        <div class="row ">
+            <div class="col-sm-10 col-xs-10">
+                <div class="form-froup contact-from-box">
+                    <div class="">
+                        <input class="wid-100" type="text" [(ngModel)]="data.requirementData.requirement" placeholder="Enter Requirement">
+                        <!-- <textarea placeholder="Job Description" class="contact-form-text-area" [formControl]="jobRequirements"></textarea> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- ============================================================================= -->
+    <div *ngIf="data.type=='d_qualification'">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="job-information">
+                    <h3>Desired Requirement</h3>
+                    <span class="job-information-span"></span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div class="row" *ngFor="let item of inputArray;let i=index">
+                <div class="col-sm-10 col-xs-10">
+                    <div class="form-froup contact-from-box">
+                        <div class="inline-block">
+                            <input (keyup)="onKey($event,i)" type="text" name="requirement" class="contact-form-control" placeholder="Job Requirement" required>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-2">
+                    <div class="mar-19 pdlr-32">
+                        <span>
+                            <img (click)="removeInput(i)" src="../../../../assets/icons/cross.png" alt="..">
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="inline-block" style="position: absolute;
+        right: 435px;margin-top: -48px;">
+                <img (click)="addInput()" src="../../../../assets/icons/add-1.png" alt="..">
+            </div>
+        </div>
+
+        <!-- <div class="row ">
+      <div class="col-sm-10 col-xs-10">
+        <div class="form-froup contact-from-box">
+          <div class="inline-block" *ngFor="let row of jobRequirements">
+            <textarea placeholder="Job Description" class="contact-form-text-area" [formControl]="jobRequirements"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </div> -->
+    </div>
+    <div *ngIf="data.type=='editSingle_d_qualification'">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="job-information">
+                    <h3>Edit Qualification</h3>
+                    <span class="job-information-span"></span>
+                </div>
+                <span (click)="onNoClick()" class="cancel-dialog"><i class="fa fa-close"></i></span>
+            </div>
+        </div>
+        <br>
+
+        <div class="row ">
+            <div class="col-sm-10 col-xs-10">
+                <div class="form-froup contact-from-box">
+                    <div class="">
+                        <input class="wid-100" type="text" [(ngModel)]="data.d_qualification.requirement" placeholder="Enter Requirement">
+                        <!-- <textarea placeholder="Job Description" class="contact-form-text-area" [formControl]="jobRequirements"></textarea> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================================ -->
+    <!-- ============================================================================= -->
+    <div *ngIf="data.type=='job_questions'">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="job-information">
+                    <h3>Job Questions</h3>
+                    <span class="job-information-span"></span>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            <div class="row" *ngFor="let item of inputArray;let i=index">
+                <div class="col-sm-10 col-xs-10">
+                    <div class="form-froup contact-from-box">
+                        <div class="inline-block">
+                            <input (keyup)="onKey($event,i)" type="text" name="requirement" class="contact-form-control" placeholder="Job Questions" required>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 col-xs-2">
+                    <div class="mar-19 pdlr-32">
+                        <span>
+                            <img (click)="removeInput(i)" src="../../../../assets/icons/cross.png" alt="..">
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="inline-block" style="position: absolute;
+        right: 435px;margin-top: -48px;">
+                <img (click)="addInput()" src="../../../../assets/icons/add-1.png" alt="..">
+            </div>
+        </div>
+
+        <!-- <div class="row ">
+      <div class="col-sm-10 col-xs-10">
+        <div class="form-froup contact-from-box">
+          <div class="inline-block" *ngFor="let row of jobRequirements">
+            <textarea placeholder="Job Description" class="contact-form-text-area" [formControl]="jobRequirements"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </div> -->
+    </div>
+    <div *ngIf="data.type=='editSingle_job_questions'">
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="job-information">
+                    <h3>Edit Question</h3>
+                    <span class="job-information-span"></span>
+                </div>
+                <span (click)="onNoClick()" class="cancel-dialog"><i class="fa fa-close"></i></span>
+            </div>
+        </div>
+        <br>
+
+        <div class="row ">
+            <div class="col-sm-10 col-xs-10">
+                <div class="form-froup contact-from-box">
+                    <div class="">
+                        <input class="wid-100" type="text" [(ngModel)]="data.job_questions.question" placeholder="Enter Question">
+                        <!-- <textarea placeholder="Job Description" class="contact-form-text-area" [formControl]="jobRequirements"></textarea> -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================================================ -->
+
+
+
+
+
+    <div *ngIf="data.type=='profile'">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="job-information">
+                    <h3>Company Profile</h3>
+                    <span class="job-information-span"></span>
+                </div>
+            </div>
+            <span (click)="onNoClick()" class="cancel-dialog"><i class="fa fa-close"></i></span>
+        </div>
+
+        <div class="row">
+            <div class="light-bg pd-25 margin-btm">
+                <form>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-froup contact-from-box">
+                                <span class="inline">
+                                    <!-- <img src="../../../../assets/icons/message.png" alt=".."> -->
+                                </span>
+                                <!-- <textarea placeholder="Company Profile" class="contact-form-text-area text-area-1" [formControl]="jobCompany"></textarea> -->
+                                <ckeditor tagName="textarea" [formControl]="jobCompany" class="contact-form-text-area text-area-1" required></ckeditor>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div mat-dialog-actions>
+    <!-- <button mat-button (click)="onNoClick()" class="mat-raised-button mat-primary">Cancel</button> -->
+    <button mat-button (click)="submitDialog()" cdkFocusInitial class="mat-raised-button mat-accent">Submit <img
+            src="../../../../assets/images/right-arrow.png" alt=""> </button>
+</div>

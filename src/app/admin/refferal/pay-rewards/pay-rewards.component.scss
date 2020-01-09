@@ -1,0 +1,49 @@
+.table {
+    position: relative;
+    top: 0px;
+}
+
+.table>tbody>tr>td {
+    border-top: hidden;
+    color: #141414;
+    font-weight: unset;
+    text-align: justify;
+}
+
+.pay-btn {
+    height: 30px;
+    padding: 5px 0px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    -webkit-transform: skewX(-8deg);
+    transform: skewX(-8deg);
+    background-image: linear-gradient(to right, #1c814f, #0ea042);
+    border: 1px solid #000000;
+    box-shadow: inset -2px -2px 0px 2px #127c37;
+    -moz-box-shadow: inset -2px -2px 0px 2px #127c37;
+    -webkit-box-shadow: inset -2px -2px 0px 2px #127c37;
+}
+
+.paid-btn {
+    height: 30px;
+    padding: 5px 0px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    -webkit-transform: skewX(-8deg);
+    transform: skewX(-8deg);
+    background-image: linear-gradient(to right, #c61515, #eb0000);
+    border: 1px solid #000000;
+    box-shadow: inset -2px -2px 0px 2px #fb0000;
+    -moz-box-shadow: inset -2px -2px 0px 2px #fb0000;
+    -webkit-box-shadow: inset -2px -2px 0px 2px #fb0000;
+}
+
+.icons-color {
+    color: #ff7a00;
+}
